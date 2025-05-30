@@ -6,19 +6,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from time import sleep
 
-service = Service("/usr/bin/geckodriver")
 
 options = Options()
-options.binary_location = "/usr/bin/firefox" 
 options.add_argument("--incognito")
-options.set_preference("browser.tabs.remote.autostart", False)
-options.set_preference("browser.tabs.remote.autostart.2", False)
-options.set_preference("devtools.debugger.remote-enabled", True)
-options.set_preference("devtools.debugger.remote-port", 9222)
-profile_path = "/home/alvis/.mozilla/firefox/8d6vdn6m.default-release"
-profile = FirefoxProfile(profile_path)
+profile = FirefoxProfile()
 options.profile = profile
-driver = webdriver.Firefox(service=service, options=options)
+driver = webdriver.Firefox(options=options)
 f = open("urls.txt", "w")
 
 for i in range(1, 843):
